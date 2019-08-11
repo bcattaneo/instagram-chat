@@ -8,12 +8,11 @@ const chatIconId = 'instagram-chat';
 const chatBoxId = 'chat-window';
 const chatHeaderIds = ['b5itu', 'Z_FEn'];
 const sendMessageIds = ['frMpI', 'X3a-9'];
-const homeLinkId = 'HOQT4';
 const iconsClassName = '_47KiJ';
 
 // Chat iframe
 const chat = `
-    <div class="mXkkY KDuQp" id="${chatIconId}">
+    <div style="margin-left: 19px;" class="mXkkY KDuQp" id="${chatIconId}">
         <a class="xWeGp" href="javascript:window.sharedObj.showOrHideChat('${chatBoxId}');">
             <span class="glyphsSpriteDirect__outline__24__grey_9 u-__7" aria-label="Direct"></span>
         </a>
@@ -69,7 +68,8 @@ function loop() {
     try {
         if (!document.getElementById(chatIconId)) {
             var icons = document.getElementsByClassName(iconsClassName)[0];
-            icons.innerHTML = chat + icons.innerHTML;
+            icons.append()
+            icons.innerHTML = icons.innerHTML + chat;
         }
     } catch(ex) {}
 
@@ -100,10 +100,9 @@ function loop() {
 
     // Block link back to instagram from chat
     try {
-        var homeLink = chatBox.contentDocument.getElementsByClassName(homeLinkId)[0];
         var firstLink = chatBox.contentDocument.getElementsByTagName("a")[0];
         if (firstLink.href == igHome) {
-            homeLink.innerHTML = '';
+            firstLink.style.display = "none";
         }
     } catch(ex) {}
 
