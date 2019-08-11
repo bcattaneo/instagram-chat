@@ -2,15 +2,25 @@
 
     "manifest_version": 2,
     "name": "Instagram Chat",
-    "version": "1.0",
+    "version": "1.0.0",
     "description": "Enables instagram chat for the desktop.",
     "icons": {
-        "48": "icons/chat-48.png"
+        "48": "icons/chat-48.gif"
     },
+    "permissions": [
+        "webRequest",
+        "webRequestBlocking",
+        "<all_urls>"
+    ],
     "content_scripts": [
         {
             "matches": ["*://*.instagram.com/*"],
-            "js": ["instagram-chat.js"]
+            "exclude_globs": ["*://*.instagram.com/direct/*"],
+            "js": ["instagram-chat.js"],
+            "run_at": "document_idle"
         }
-    ]
+    ],
+    "background": {
+        "scripts": ["agent-switcher.js"]
+    }
 }
